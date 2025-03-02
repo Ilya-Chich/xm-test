@@ -9,7 +9,7 @@ Usage:
 - run `make init` to create containers and application
 - use 2345 port for remote debug with air+delve
 - all documentation is available here: http://localhost:8081/api/v1/documentation/
-- health check here: http://localhost:8081/api/v1/healthcheck/
+- health check here: http://localhost:8081/api/v1/health/
 - `make docs` is used to regenerate structures out of OpenApi yaml files
 - `make lint` is used to run linters via golangci-lint package
 - Simple (but not complete) scheme ![](assets/scheme.png)
