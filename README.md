@@ -13,3 +13,4 @@ Usage:
 - `make docs` is used to regenerate structures out of OpenApi yaml files
 - `make lint` is used to run linters via golangci-lint package
 - Simple (but not complete) scheme ![](assets/scheme.png)
+- And do not forget to add 'Bearer ' before access token in requests
