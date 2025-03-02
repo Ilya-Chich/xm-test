@@ -1,0 +1,36 @@
+CreateCompanyRequest:
+  description: Request body for creating a new company
+  type: object
+  required:
+    - name
+    - amount_of_employees
+    - registered
+    - type
+  properties:
+    name:
+      description: Name of the company (must be unique)
+      type: string
+      maxLength: 15
+      example: "XM"
+    description:
+      description: Detailed description of the company
+      type: string
+      maxLength: 3000
+      example: "A leading tech company"
+    amount_of_employees:
+      description: Number of employees in the company
+      type: integer
+      example: 500
+    registered:
+      description: Indicates whether the company is officially registered
+      type: boolean
+      example: true
+    type:
+      description: Type of company
+      type: string
+      enum:
+        - Corporations
+        - NonProfit
+        - Cooperative
+        - Sole Proprietorship
+      example: "Corporations"

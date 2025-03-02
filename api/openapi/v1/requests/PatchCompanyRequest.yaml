@@ -1,0 +1,34 @@
+PatchCompanyRequest:
+  description: Request body for updating a company's details
+  type: object
+  properties:
+    name:
+      description: Name of the company (must be unique)
+      type: string
+      maxLength: 15
+      minLength: 1
+      example: "XM Updated"
+    description:
+      description: Detailed description of the company
+      type: string
+      maxLength: 3000
+      minLength: 1
+      example: "An updated description of the company."
+    amount_of_employees:
+      description: Number of employees in the company
+      type: integer
+      minimum: 1
+      example: 600
+    registered:
+      description: Indicates whether the company is officially registered
+      type: boolean
+      example: false
+    type:
+      description: Type of company
+      type: string
+      enum:
+        - Corporations
+        - NonProfit
+        - Cooperative
+        - Sole Proprietorship
+      example: "NonProfit"

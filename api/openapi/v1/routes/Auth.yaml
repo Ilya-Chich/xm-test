@@ -1,0 +1,27 @@
+paths:
+  AuthRoute:
+      post:
+        tags:
+          - Authentication
+        summary: Authenticate user and return JWT token
+        description: User logs in with email and password and receives an access token.
+        operationId: Login
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '../requests/AuthRequest.yaml#/AuthRequest'
+        responses:
+          '200':
+            description: Successfully authenticated
+            content:
+              application/json:
+                schema:
+                  $ref: '../responses/AuthResponse.yaml#/AuthResponse'
+          '400':
+            description: Invalid request
+          '401':
+            description: Unauthorized (Invalid credentials)
+          '500':
+            description: Internal server error

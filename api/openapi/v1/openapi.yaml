@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info:
+  title: XM Companies service
+  version: 1.0.0
+servers:
+  - url: http://localhost:8081
+    description: dev env
+  - url: https://stage.stage
+    description: stage env
+  - url: https://prod.prod
+    description: prod env
+paths:
+  /api/v1/health:
+    $ref: 'routes/Health.yaml#/paths/Health'
+  /api/v1/companies:
+    $ref: 'routes/Company.yaml#/paths/CreateCompany'
+  /api/v1/companies/{id}:
+    $ref: 'routes/Company.yaml#/paths/CompanyById'
+  /api/v1/auth/login:
+    $ref: 'routes/Auth.yaml#/paths/AuthRoute'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Bearer authorization

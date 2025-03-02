@@ -1,0 +1,105 @@
+paths:
+  CompanyById:
+    get:
+      tags:
+        - Companies
+      summary: Get details of a specific company by ID
+      description: Retrieve detailed information about a company using its unique identifier.
+      operationId: GetCompany
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier of the company
+          required: true
+          schema:
+            $ref: '../requests/GetCompanyRequest.yaml#/GetCompanyRequest'
+      responses:
+        '200':
+          description: Successful response with company details
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/GetCompanyResponse.yaml#/GetCompanyResponse'
+        '404':
+          description: Company not found
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+        - Companies
+      security:
+        - BearerAuth: [ ]
+      summary: Delete a company by ID
+      description: Permanently removes a company from the system using its unique identifier.
+      operationId: DeleteCompany
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier of the company to be deleted
+          required: true
+          schema:
+            $ref: '../requests/DeleteCompanyRequest.yaml#/DeleteCompanyRequest'
+      responses:
+        '204':
+          description: Company successfully deleted (No Content)
+        '404':
+          description: Company not found
+        '500':
+          description: Internal server error
+    patch:
+      tags:
+        - Companies
+      security:
+        - BearerAuth: [ ]
+      summary: Update a company's details
+      description: Partially update a company's information. Allows updating any field except the ID.
+      operationId: PatchCompany
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier of the company
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../requests/PatchCompanyRequest.yaml#/PatchCompanyRequest'
+      responses:
+        '204':
+          description: Company successfully updated (No Content)
+        '400':
+          description: Invalid request body
+        '404':
+          description: Company not found
+        '500':
+          description: Internal server error
+
+
+  CreateCompany:
+    post:
+      tags:
+        - Companies
+      security:
+        - BearerAuth: [ ]
+      summary: Create a new company
+      description: Adds a new company to the system.
+      operationId: CreateCompany
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../requests/CreateCompanyRequest.yaml#/CreateCompanyRequest'
+      responses:
+        '204':
+          description: Company successfully created (No Content)
+        '400':
+          description: Invalid request body
+        '409':
+          description: Company with the same name already exists
+        '500':
+          description: Internal server error

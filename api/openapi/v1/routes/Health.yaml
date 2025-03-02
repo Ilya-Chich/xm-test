@@ -1,0 +1,12 @@
+paths:
+  Health:
+    get:
+      tags:
+        - Health check
+      description: returns 200 if everything is okay
+      operationId: Health
+      parameters:
+      responses:
+        200:
+          description: OK
+
